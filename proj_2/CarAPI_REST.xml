@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="98f12bfe-bf0b-45f6-ba0f-763ef05e4543" activeEnvironment="Default" name="CarAPI_REST" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="41dc3a45-bd8f-42da-a32b-19f74221d566" wadlVersion="http://wadl.dev.java.net/2009/02" name="Localhost" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Add Car" path="/api/Car" id="84dcef1f-f7d1-4d33-a085-e3003ea63a3a">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="Add CAR" id="23a93baf-9a74-4f83-9665-46ba9a6f66f4" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>application/problem+json; charset=utf-8</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+          <con:element xmlns:car="http://localhost/api/Car">car:Fault</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=utf-8</con:mediaType>
+          <con:status>201</con:status>
+          <con:params/>
+          <con:element xmlns:car="http://localhost/api/Car">car:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{
+   "name": "Polonez"
+}</con:request>
+          <con:originalUri>http://localhost/api/Car</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="Get Car by id" path="/api/Car/{id}" id="554d0a27-1276-49f5-927e-a033e22c732d">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>id</con:name>
+          <con:value>id</con:value>
+          <con:style>TEMPLATE</con:style>
+          <con:default>id</con:default>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="54608c4e-40c9-4e1c-9989-4b3c5f6190d9" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=utf-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:ns="http://localhost/api/Car/1">ns:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/api/Car/1</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters>
+            <entry key="id" value="1" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="3e6365d4-11ad-4502-97ff-40bf2b31e6e0" name="Service_Add">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="c7d2541e-07e9-4608-9353-57290c6ff8d8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Add Positive" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="restrequest" name="Add CAR" id="b35d23b3-9baf-481b-b39d-47b37a2256f6">
+        <con:settings/>
+        <con:config service="Localhost" resourcePath="/api/Car" methodName="Add CAR" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Add CAR" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{
+   "name": "Polonez"
+}</con:request>
+            <con:originalUri>http://localhost/api/Car</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:properties/>
+  </con:testSuite>
+  <con:testSuite id="8b99e50f-b7b7-46d0-acef-1bff616cd312" name="Integration">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="611f6c44-b6f8-4605-a215-a219facfa51b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Add and Get" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="restrequest" name="AddCAR" id="988240c6-2925-4130-9bb4-cb073697161f">
+        <con:settings/>
+        <con:config service="Localhost" resourcePath="/api/Car" methodName="Add CAR" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="AddCAR" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{
+   "name": "Polonez"
+}</con:request>
+            <con:originalUri>http://localhost/api/Car</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="Groovy Script" id="c192764a-3812-4264-8af7-c1fb14739f22" disabled="true">
+        <con:settings/>
+        <con:config>
+          <script>import groovy.json.*
+
+def response = context.expand( '${AddCAR#Response}' ).toString()
+def json = new JsonSlurper().parseText (response)
+log.info json.id</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="8f5705a8-792c-49b5-b9e4-9db1248f3db5">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>id</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>AddCAR</con:sourceStep>
+            <con:sourcePath>id</con:sourcePath>
+            <con:targetType>id</con:targetType>
+            <con:targetStep>Get</con:targetStep>
+            <con:type>JSONPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Get" id="0ea87a09-7573-49d5-85c0-18115284b3cb">
+        <con:settings/>
+        <con:config service="Localhost" resourcePath="/api/Car/{id}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Get" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/Car/1</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="id" value="6" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:properties/>
+  </con:testSuite>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+</con:soapui-project>

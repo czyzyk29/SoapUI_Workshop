@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e0f63b9d-8a33-48f6-abf9-792054601d25" activeEnvironment="Default" name="GoREST" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="e0c5a2ce-457e-4975-b5c3-9232b054c140" wadlVersion="http://wadl.dev.java.net/2009/02" name="GoREST" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/>
+    <con:endpoints>
+      <con:endpoint>https://gorest.co.in</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Users" path="/public-api/users" id="67bb891a-ca2a-41f0-8b77-b13d782dd91a">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="get all users" id="806ee087-550e-4fb6-a133-078570c8476e" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:user="https://gorest.co.in/public-api/users">user:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="13f92b7a-72bb-46e6-95a3-213865bc3157" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            <con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@follow-redirects">false</con:setting>
+          </con:settings>
+          <con:endpoint>https://gorest.co.in</con:endpoint>
+          <con:request/>
+          <con:originalUri>https://gorest.co.in/public-api/users</con:originalUri>
+          <con:credentials>
+            <con:password>Bearer s-UdyHCXTOPMBmiF6ZHejXt6j4m3PMT9ILpI</con:password>
+            <con:selectedAuthProfile>Profile 1</con:selectedAuthProfile>
+            <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+            <con:addedBasicAuthenticationTypes>SPNEGO/Kerberos</con:addedBasicAuthenticationTypes>
+            <con:preemptive>true</con:preemptive>
+            <con:authType>OAuth 2.0</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+          <con:parameterOrder/>
+        </con:request>
+      </con:method>
+      <con:method name="add users" id="806ee087-550e-4fb6-a133-078570c8476e" method="POST">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200 302</con:status>
+          <con:params/>
+          <con:element xmlns:user="https://gorest.co.in/public-api/users">user:Response</con:element>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="13f92b7a-72bb-46e6-95a3-213865bc3157" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            <con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@follow-redirects">false</con:setting>
+          </con:settings>
+          <con:endpoint>https://gorest.co.in</con:endpoint>
+          <con:request>{
+	"first_name": "imie",
+	"last_name": "nazwisko",
+	"gender": "male",
+	"email": "test@tedgdddggdfst.com"
+}</con:request>
+          <con:originalUri>https://gorest.co.in/public-api/users</con:originalUri>
+          <con:credentials>
+            <con:password>Bearer s-UdyHCXTOPMBmiF6ZHejXt6j4m3PMT9ILpI</con:password>
+            <con:selectedAuthProfile>Profile 1</con:selectedAuthProfile>
+            <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+            <con:addedBasicAuthenticationTypes>SPNEGO/Kerberos</con:addedBasicAuthenticationTypes>
+            <con:preemptive>true</con:preemptive>
+            <con:authType>OAuth 2.0</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+          <con:parameterOrder/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="users" path="/public-api/users/{id}" id="65b22db6-7c26-4c19-a52a-c01ea686481b">
+      <con:settings/>
+      <con:parameters>
+        <con:parameter>
+          <con:name>id</con:name>
+          <con:value/>
+          <con:style>TEMPLATE</con:style>
+          <con:default/>
+          <con:description xsi:nil="true"/>
+        </con:parameter>
+      </con:parameters>
+      <con:method name="Method 1" id="997c5848-9c0b-4b38-943d-990662f25371" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:user="https://gorest.co.in/pulic-api/users">user:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="3109e4aa-4f0c-44f0-8c3d-59f0b601aa78" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            <con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@follow-redirects">false</con:setting>
+          </con:settings>
+          <con:endpoint>https://gorest.co.in</con:endpoint>
+          <con:request/>
+          <con:originalUri>https://gorest.co.in/pulic-api/users</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>Profile 1</con:selectedAuthProfile>
+            <con:authType>OAuth 2.0</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters>
+            <entry key="id" value="7" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>id</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+      <con:method name="delete" id="997c5848-9c0b-4b38-943d-990662f25371" method="DELETE">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=UTF-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:user="https://gorest.co.in/pulic-api/users">user:Response</con:element>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="3109e4aa-4f0c-44f0-8c3d-59f0b601aa78" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            <con:setting id="com.eviware.soapui.impl.support.AbstractHttpRequest@follow-redirects">false</con:setting>
+          </con:settings>
+          <con:endpoint>https://gorest.co.in</con:endpoint>
+          <con:request/>
+          <con:originalUri>https://gorest.co.in/pulic-api/users</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>Profile 1</con:selectedAuthProfile>
+            <con:authType>OAuth 2.0</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters>
+            <entry key="id" value="7" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+          <con:parameterOrder>
+            <con:entry>id</con:entry>
+          </con:parameterOrder>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer>
+    <con:oAuth2Profile>
+      <con:name>Profile 1</con:name>
+      <con:accessToken>z0bROAWgHDjTBrbIAgC14nRRI4IxTDTSq5h0</con:accessToken>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:oAuth2Flow>AUTHORIZATION_CODE_GRANT</con:oAuth2Flow>
+      <con:refreshAccessTokenMethod>MANUAL</con:refreshAccessTokenMethod>
+      <con:accessTokenStatus>ENTERED_MANUALLY</con:accessTokenStatus>
+      <con:accessTokenStartingStatus>ENTERED_MANUALLY</con:accessTokenStartingStatus>
+      <con:manualAccessTokenExpirationTime/>
+      <con:manualAccessTokenExpirationTimeUnit>SECONDS</con:manualAccessTokenExpirationTimeUnit>
+    </con:oAuth2Profile>
+  </con:oAuth2ProfileContainer>
+  <con:oAuth1ProfileContainer/>
+  <con:sensitiveInformation/>
+</con:soapui-project>
