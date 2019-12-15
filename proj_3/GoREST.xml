@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="e0f63b9d-8a33-48f6-abf9-792054601d25" activeEnvironment="Default" name="GoREST" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="e0f63b9d-8a33-48f6-abf9-792054601d25" activeEnvironment="Default" name="GoREST" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
   <con:interface xsi:type="con:RestService" id="e0c5a2ce-457e-4975-b5c3-9232b054c140" wadlVersion="http://wadl.dev.java.net/2009/02" name="GoREST" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
@@ -182,7 +182,7 @@
       <con:accessTokenPosition>HEADER</con:accessTokenPosition>
       <con:oAuth2Flow>AUTHORIZATION_CODE_GRANT</con:oAuth2Flow>
       <con:refreshAccessTokenMethod>MANUAL</con:refreshAccessTokenMethod>
-      <con:accessTokenStatus>ENTERED_MANUALLY</con:accessTokenStatus>
+      <con:accessTokenStatus>UNKNOWN</con:accessTokenStatus>
       <con:accessTokenStartingStatus>ENTERED_MANUALLY</con:accessTokenStartingStatus>
       <con:manualAccessTokenExpirationTime/>
       <con:manualAccessTokenExpirationTimeUnit>SECONDS</con:manualAccessTokenExpirationTimeUnit>

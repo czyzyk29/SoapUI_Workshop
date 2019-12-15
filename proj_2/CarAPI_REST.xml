@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="98f12bfe-bf0b-45f6-ba0f-763ef05e4543" activeEnvironment="Default" name="CarAPI_REST" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="98f12bfe-bf0b-45f6-ba0f-763ef05e4543" activeEnvironment="Default" name="CarAPI_REST" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
   <con:interface xsi:type="con:RestService" id="41dc3a45-bd8f-42da-a32b-19f74221d566" wadlVersion="http://wadl.dev.java.net/2009/02" name="Localhost" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
