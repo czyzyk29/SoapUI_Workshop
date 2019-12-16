@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:soapui-project id="46e816a1-6284-4df6-a4d5-c5710468dba3" activeEnvironment="Default" name="Calculator" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
-  <con:settings/>
+  <con:settings>
+    <con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Report Format(s)" value=""/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="Export JUnit Results" value="true"/>
+  <con:entry key="Export All" value="true"/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="TestSuite" value="Service_Add"/>
+  <con:entry key="Endpoint" value=""/>
+  <con:entry key="Select Report Type" value=""/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="Print Report" value="true"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Export JUnit Results with test properties" value="false"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="TestCase" value="2+2"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="user-settings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value=""/>
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="Root Folder" value="C:\New Folder"/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Save Project" value="false"/>
+</xml-fragment>]]></con:setting>
+  </con:settings>
   <con:interface xsi:type="con:WsdlInterface" id="0048d155-8892-4e4a-9e4d-086465203d4e" wsaVersion="NONE" name="CalculatorSoap12" type="wsdl" bindingName="{http://tempuri.org/}CalculatorSoap12" soapVersion="1_2" anonymous="optional" definition="http://www.dneonline.com/calculator.asmx?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:definitionCache/>
@@ -692,4 +725,5 @@
   <con:wssContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>
+  <con:sensitiveInformation/>
 </con:soapui-project>

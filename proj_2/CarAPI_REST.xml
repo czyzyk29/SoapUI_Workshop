@@ -3,11 +3,11 @@
   <con:settings/>
   <con:interface xsi:type="con:RestService" id="41dc3a45-bd8f-42da-a32b-19f74221d566" wadlVersion="http://wadl.dev.java.net/2009/02" name="Localhost" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
-    <con:definitionCache/>
+    <con:definitionCache type="TEXT" rootPart=""/>
     <con:endpoints>
       <con:endpoint>http://localhost:8080</con:endpoint>
     </con:endpoints>
-    <con:resource name="Add Car" path="/api/Car" id="84dcef1f-f7d1-4d33-a085-e3003ea63a3a">
+    <con:resource name="Car" path="/api/Car" id="84dcef1f-f7d1-4d33-a085-e3003ea63a3a">
       <con:settings/>
       <con:parameters/>
       <con:method name="Add CAR" id="23a93baf-9a74-4f83-9665-46ba9a6f66f4" method="POST">
@@ -46,8 +46,44 @@
           <con:parameters/>
         </con:request>
       </con:method>
+      <con:method name="Get all" id="23a93baf-9a74-4f83-9665-46ba9a6f66f4" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>application/problem+json; charset=utf-8</con:mediaType>
+          <con:status>400</con:status>
+          <con:params/>
+          <con:element xmlns:car="http://localhost/api/Car">car:Fault</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=utf-8</con:mediaType>
+          <con:status>201 200</con:status>
+          <con:params/>
+          <con:element xmlns:car="http://localhost/api/Car">car:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request>{
+   "name": "Polonez"
+}</con:request>
+          <con:originalUri>http://localhost/api/Car</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
     </con:resource>
-    <con:resource name="Get Car by id" path="/api/Car/{id}" id="554d0a27-1276-49f5-927e-a033e22c732d">
+    <con:resource name="Car by id" path="/api/Car/{id}" id="554d0a27-1276-49f5-927e-a033e22c732d">
       <con:settings/>
       <con:parameters>
         <con:parameter>
@@ -57,7 +93,7 @@
           <con:default>id</con:default>
         </con:parameter>
       </con:parameters>
-      <con:method name="Method 1" id="54608c4e-40c9-4e1c-9989-4b3c5f6190d9" method="GET">
+      <con:method name="Get by id" id="54608c4e-40c9-4e1c-9989-4b3c5f6190d9" method="GET">
         <con:settings/>
         <con:parameters/>
         <con:representation type="RESPONSE">
@@ -65,6 +101,60 @@
           <con:status>200</con:status>
           <con:params/>
           <con:element xmlns:ns="http://localhost/api/Car/1">ns:Response</con:element>
+        </con:representation>
+        <con:request name="Request 1" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8080</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/api/Car/1</con:originalUri>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters>
+            <entry key="id" value="1" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+      <con:method name="Delete by id" id="54608c4e-40c9-4e1c-9989-4b3c5f6190d9" method="DELETE">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=utf-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:ns="http://localhost/api/Car/1">ns:Response</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>405</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="REQUEST">
+          <con:mediaType>application/json</con:mediaType>
+          <con:params/>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>405</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>application/problem+json; charset=utf-8</con:mediaType>
+          <con:status>400 404</con:status>
+          <con:params/>
+          <con:element xmlns:ns="http://localhost/api/Car/1">ns:Fault</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
         </con:representation>
         <con:request name="Request 1" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json">
           <con:settings>
@@ -102,6 +192,121 @@
    "name": "Polonez"
 }</con:request>
             <con:originalUri>http://localhost/api/Car</con:originalUri>
+            <con:assertion type="Simple Contains" id="f75953dd-eb5b-4db8-a694-a663fb53f8fb" name="Contains">
+              <con:configuration>
+                <token>Polonez</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Valid HTTP Status Codes" id="59fa27e7-e4ae-4c80-9864-492821d7d219" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Invalid HTTP Status Codes" id="471e7f21-166c-4991-9977-5edcd578c44b" name="Invalid HTTP Status Codes">
+              <con:configuration>
+                <codes>500</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Count" id="04ab34e3-a8ac-4eb9-8573-998dcbb4ec5b" name="Count id">
+              <con:configuration>
+                <path>id</path>
+                <content>1</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Count" id="005eebb1-4f98-46a6-99e6-d76c04053211" name="Count name">
+              <con:configuration>
+                <path>name</path>
+                <content>1</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="5e4e3d01-c910-4d3b-af4c-49f642246532" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Bad_request" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="restrequest" name="Add CAR" id="2bc0cb2f-0436-4ae9-bfd6-b310004cb189">
+        <con:settings/>
+        <con:config service="Localhost" resourcePath="/api/Car" methodName="Add CAR" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Add CAR" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/Car</con:originalUri>
+            <con:assertion type="Simple Contains" id="f75953dd-eb5b-4db8-a694-a663fb53f8fb" name="Error">
+              <con:configuration>
+                <token>error</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Valid HTTP Status Codes" id="59fa27e7-e4ae-4c80-9864-492821d7d219" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>400</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Invalid HTTP Status Codes" id="471e7f21-166c-4991-9977-5edcd578c44b" name="Invalid HTTP Status Codes">
+              <con:configuration>
+                <codes>500,201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Simple Contains" id="f75953dd-eb5b-4db8-a694-a663fb53f8fb" name="title">
+              <con:configuration>
+                <token>One or more validation errors occurred.</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="f8a92245-8674-42fc-ad2b-701521c3f8fa" name="traceId Groovie Script">
+              <con:configuration>
+                <scriptText>import groovy.json.JsonSlurper
+
+def resp = messageExchange.response.responseContent
+def js = new JsonSlurper().parseText(resp)
+
+def check = js.traceId
+String str = check.substring(0,14)
+
+assert  str == "0HLS20L5SNIQS:"</scriptText>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="XPath Match" id="402385c8-7b37-4dd5-8612-9d324c5d2edf" name="traceId XPATH MATCH">
+              <con:configuration>
+                <path>declare namespace ns1='http://localhost/api/Car';
+//ns1:traceId</path>
+                <content>0HLS20L5SNIQS:*</content>
+                <allowWildcards>true</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Match" id="502afbc0-bb9e-4b65-bcd5-b208246d4b4a" name="JsonPath Match">
+              <con:configuration/>
+            </con:assertion>
+            <con:assertion type="Simple Contains" id="119940b0-0798-4891-9e0e-f1326bb2ab54" name="status">
+              <con:configuration>
+                <token>400</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
             <con:credentials>
               <con:authType>No Authorization</con:authType>
             </con:credentials>
@@ -120,10 +325,172 @@
     <con:runType>SEQUENTIAL</con:runType>
     <con:testCase id="611f6c44-b6f8-4605-a215-a219facfa51b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Add and Get" searchProperties="true">
       <con:settings/>
+      <con:testStep type="groovy" name="GetDataFromFile" id="ddcc26a5-2edc-4289-83a1-f2713322eebc">
+        <con:settings/>
+        <con:config>
+          <script>def file = new File("C:\\Cars.txt") 
+def filereader= new FileReader(file)
+def bufferedreader = new BufferedReader(filereader) 
+def tmp = bufferedreader.readLine()</script>
+        </con:config>
+      </con:testStep>
       <con:testStep type="restrequest" name="AddCAR" id="988240c6-2925-4130-9bb4-cb073697161f">
         <con:settings/>
         <con:config service="Localhost" resourcePath="/api/Car" methodName="Add CAR" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:restRequest name="AddCAR" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{
+   "name": "${GetDataFromFile#result}"
+}</con:request>
+            <con:originalUri>http://localhost/api/Car</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="082ea8e6-42bc-4016-a470-4134c369edec" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="transfer" name="Property Transfer" id="8f5705a8-792c-49b5-b9e4-9db1248f3db5">
+        <con:settings/>
+        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>id</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>AddCAR</con:sourceStep>
+            <con:sourcePath>id</con:sourcePath>
+            <con:targetType>id</con:targetType>
+            <con:targetStep>Get</con:targetStep>
+            <con:type>JSONPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+            <con:name>name</con:name>
+            <con:sourceType>Response</con:sourceType>
+            <con:sourceStep>AddCAR</con:sourceStep>
+            <con:sourcePath>name</con:sourcePath>
+            <con:targetType>carName</con:targetType>
+            <con:targetStep>#TestCase#</con:targetStep>
+            <con:type>JSONPATH</con:type>
+            <con:upgraded>true</con:upgraded>
+          </con:transfers>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Get" id="0ea87a09-7573-49d5-85c0-18115284b3cb">
+        <con:settings/>
+        <con:config service="Localhost" resourcePath="/api/Car/{id}" methodName="Get by id" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Get" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/Car/1</con:originalUri>
+            <con:assertion type="GroovyScriptAssertion" id="a76847d0-38b5-4564-bcf0-ea7259dbdf32" name="assert what you ADD">
+              <con:configuration>
+                <scriptText>import groovy.json.JsonSlurper
+
+def respGet = messageExchange.response.responseContent
+def jsGet = new JsonSlurper().parseText(respGet)
+def respCarNameGet = jsGet.name
+log.info "car from get "+respCarNameGet
+
+
+def respPost = context.expand( '${AddCAR#Response}' )
+def jsPost  = new JsonSlurper() .parseText(respPost)
+def respCarNamePost = jsPost.name
+log.info "car from post  "+respCarNamePost
+
+assert respCarNameGet == respCarNamePost</scriptText>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Valid HTTP Status Codes" id="dc1112e4-f127-4a15-a663-53de888e7fb3" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Invalid HTTP Status Codes" id="d80b2d13-ea54-4c81-801a-0a85a6cbb965" name="Invalid HTTP Status Codes">
+              <con:configuration>
+                <codes>500,400</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="id" value="26" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>carName</con:name>
+          <con:value>Warszawa</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="af46cb55-15ca-4ce8-82a9-93d8028897a4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Delete all" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="groovy" name="Delete_all" id="ebf1c439-b32a-48eb-a66a-234dbd4e6b36">
+        <con:settings/>
+        <con:config>
+          <script>import groovy.json.JsonSlurper
+
+def testStepDeleteOne = testRunner.testCase.testSteps['Delete_one']
+def testStepGetAll = testRunner.testCase.testSteps['Get_all']
+
+
+while (true)
+{
+	
+	testStepGetAll.run( testRunner, context )
+	
+	def response = context.expand( '${Get_all#Response}' )
+	def jsonSlurper = new JsonSlurper().parseText(response)
+	
+	String firstId = jsonSlurper.id[0]
+	String firstName = jsonSlurper.name[0]
+	log.info jsonSlurper.id[0]
+	log.info jsonSlurper.name[0]
+	if(firstName != "Porsche")
+	{
+		testRunner.testCase.testSuite.setPropertyValue( "id_to_delete", firstId )
+		testStepDeleteOne.run( testRunner, context )
+	}
+	else
+	{
+		
+		return "End Script all data deleted"
+	}
+
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="calltestcase" name="Delete_one" id="e1077806-4c08-4122-8dfb-74f19efaf957">
+        <con:settings/>
+        <con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:targetTestCase>33429291-581a-40cb-8eb5-fc876174d371</con:targetTestCase>
+          <con:properties/>
+          <con:returnProperties/>
+          <con:runMode>SINGLETON_AND_WAIT</con:runMode>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Get_all" id="c0c54de6-20ad-4db3-b33d-e4b4534f4a58">
+        <con:settings/>
+        <con:config service="Localhost" resourcePath="/api/Car" methodName="Get all" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Get_all" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
             <con:settings>
               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
@@ -141,35 +508,62 @@
           </con:restRequest>
         </con:config>
       </con:testStep>
-      <con:testStep type="groovy" name="Groovy Script" id="c192764a-3812-4264-8af7-c1fb14739f22" disabled="true">
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="33429291-581a-40cb-8eb5-fc876174d371" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Delete 1 vehicle" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="restrequest" name="Delete by id" id="53040e90-b087-4287-81ef-66ed4ab3f15b">
         <con:settings/>
-        <con:config>
-          <script>import groovy.json.*
-
-def response = context.expand( '${AddCAR#Response}' ).toString()
-def json = new JsonSlurper().parseText (response)
-log.info json.id</script>
+        <con:config service="Localhost" resourcePath="/api/Car/{id}" methodName="Delete by id" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Delete by id" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://localhost/api/Car/1</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="acbbba92-70b7-435c-89cb-b2aa36eb2916" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>204</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="id" value="${#TestSuite#id_to_delete}" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
         </con:config>
       </con:testStep>
-      <con:testStep type="transfer" name="Property Transfer" id="8f5705a8-792c-49b5-b9e4-9db1248f3db5">
+      <con:properties/>
+    </con:testCase>
+    <con:properties>
+      <con:property>
+        <con:name>id_to_delete</con:name>
+        <con:value>34</con:value>
+      </con:property>
+      <con:property>
+        <con:name>someValue</con:name>
+        <con:value/>
+      </con:property>
+      <con:property>
+        <con:name>MyProp</con:name>
+        <con:value>6</con:value>
+      </con:property>
+    </con:properties>
+  </con:testSuite>
+  <con:testSuite id="4d5ec956-911b-44e5-a291-21fdea608a6e" name="Service Delete">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="c1950437-4caf-4407-934b-1a4b45a401a8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Delete 1 vehicle" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="restrequest" name="Delete by id" id="ce45242a-7168-465c-8e80-42b579157a06">
         <con:settings/>
-        <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
-            <con:name>id</con:name>
-            <con:sourceType>Response</con:sourceType>
-            <con:sourceStep>AddCAR</con:sourceStep>
-            <con:sourcePath>id</con:sourcePath>
-            <con:targetType>id</con:targetType>
-            <con:targetStep>Get</con:targetStep>
-            <con:type>JSONPATH</con:type>
-            <con:upgraded>true</con:upgraded>
-          </con:transfers>
-        </con:config>
-      </con:testStep>
-      <con:testStep type="restrequest" name="Get" id="0ea87a09-7573-49d5-85c0-18115284b3cb">
-        <con:settings/>
-        <con:config service="Localhost" resourcePath="/api/Car/{id}" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:restRequest name="Get" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json">
+        <con:config service="Localhost" resourcePath="/api/Car/{id}" methodName="Delete by id" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Delete by id" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json" postQueryString="false">
             <con:settings>
               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
@@ -182,7 +576,7 @@ log.info json.id</script>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:jmsPropertyConfig/>
             <con:parameters>
-              <entry key="id" value="6" xmlns="http://eviware.com/soapui/config"/>
+              <entry key="id" value="27" xmlns="http://eviware.com/soapui/config"/>
             </con:parameters>
           </con:restRequest>
         </con:config>
@@ -195,4 +589,5 @@ log.info json.id</script>
   <con:wssContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>
+  <con:sensitiveInformation/>
 </con:soapui-project>
