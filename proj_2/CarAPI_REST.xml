@@ -156,6 +156,54 @@
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>204</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
         <con:request name="Request 1" id="e744b4e1-df81-4b76-85a9-9e328040ef0a" mediaType="application/json">
           <con:settings>
             <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
@@ -284,14 +332,14 @@ def js = new JsonSlurper().parseText(resp)
 def check = js.traceId
 String str = check.substring(0,14)
 
-assert  str == "0HLS20L5SNIQS:"</scriptText>
+assert  str == "0HLS20L5SNIRK:"</scriptText>
               </con:configuration>
             </con:assertion>
             <con:assertion type="XPath Match" id="402385c8-7b37-4dd5-8612-9d324c5d2edf" name="traceId XPATH MATCH">
               <con:configuration>
                 <path>declare namespace ns1='http://localhost/api/Car';
 //ns1:traceId</path>
-                <content>0HLS20L5SNIQS:*</content>
+                <content>0HLS20L5SNIRK:*</content>
                 <allowWildcards>true</allowWildcards>
                 <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
                 <ignoreComments>false</ignoreComments>
@@ -314,6 +362,180 @@ assert  str == "0HLS20L5SNIQS:"</scriptText>
             <con:jmsPropertyConfig/>
             <con:parameters/>
           </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="d019e801-6bfe-4749-8a4e-4c9be2d67137" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get_from_excel" searchProperties="true" disabled="true">
+      <con:settings/>
+      <con:testStep type="groovy" name="get_from_excel" id="49a2a637-db14-4112-99b0-f197a7bb32bc">
+        <con:settings/>
+        <con:config>
+          <script>import jxl.*
+import jxl.write.*
+import jxl.Workbook;
+
+def groovyutils = new com.eviware.soapui.support.GroovyUtils(context)
+def projectpath = groovyutils.projectPath
+
+def f = new File("C:\\test.xls"); 
+def wk = Workbook.getWorkbook(f);
+
+def s1 = wk.getSheet(0); 
+def r = s1.getRows(); 
+def c1
+for(def i=0;i&lt;r;i++)
+{
+	c1 = s1.getCell(0, i).getContents()
+	log.info c1
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="c7b6a9ae-793f-45ac-ad19-f8445713abc7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Excel_sink" searchProperties="true" disabled="true">
+      <con:settings/>
+      <con:testStep type="groovy" name="Excel" id="2b4e91b1-a967-4950-9dd5-a7704f8ececc">
+        <con:settings/>
+        <con:config>
+          <script>import jxl.*
+import jxl.write.*
+import jxl.Workbook;
+
+def groovyutils = new com.eviware.soapui.support.GroovyUtils(context)
+def projectpath = groovyutils.projectPath
+
+def f = new File("C:\\test.xls"); 
+def wk = Workbook.getWorkbook(f);
+
+def s1 = wk.getSheet(0); 
+def r = s1.getRows(); 
+def c1
+for(def i=0;i&lt;r;i++)
+{
+	c1 = s1.getCell(0, i).getContents()  //A1 = 0,0  / A2 = 0,1 / A3 = 0,2
+	log.info c1
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="558f9e71-a0ab-45e5-a3c6-0542b28cd7e5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Set_from_excel" searchProperties="true" disabled="true">
+      <con:settings/>
+      <con:testStep type="groovy" name="Set_from_excel" id="966c2c69-cf73-4e5a-a273-3c05fe4729a5">
+        <con:settings/>
+        <con:config>
+          <script>import jxl.*
+import jxl.write.*
+import jxl.write.Label
+import jxl.Workbook;
+import java.io.File;
+import groovy.json.*
+
+//def f = new File("C:\\test_set.xls"); 
+WritableWorkbook wk = Workbook.createWorkbook(new File("C:\\test2.xls"))
+WritableSheet sheet = wk.createSheet("Worksheet_set", 0)
+
+testRunner.runTestStepByName("car")
+def response = context.expand( '${car#Response}' ).toString()
+def json = new JsonSlurper().parseText (response)
+def carName = json.name
+Label label = new Label(0, 0, carName); //col=0=A,row=0=1
+sheet.addCell(label);
+wk.write()
+wk.close()</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="car" id="172a7849-cf75-4f8a-9e2a-3c8523f72c6b">
+        <con:settings/>
+        <con:config service="Localhost" resourcePath="/api/Car" methodName="Add CAR" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="car" id="bccd6b72-6b93-4062-a692-e1b38cbd1e73" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://localhost:8080</con:endpoint>
+            <con:request>{
+   "name": "Passat"
+}</con:request>
+            <con:originalUri>http://localhost/api/Car</con:originalUri>
+            <con:assertion type="Simple Contains" id="f75953dd-eb5b-4db8-a694-a663fb53f8fb" name="Contains">
+              <con:configuration>
+                <token>Polonez</token>
+                <ignoreCase>false</ignoreCase>
+                <useRegEx>false</useRegEx>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Valid HTTP Status Codes" id="59fa27e7-e4ae-4c80-9864-492821d7d219" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="Invalid HTTP Status Codes" id="471e7f21-166c-4991-9977-5edcd578c44b" name="Invalid HTTP Status Codes">
+              <con:configuration>
+                <codes>500</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Count" id="04ab34e3-a8ac-4eb9-8573-998dcbb4ec5b" name="Count id">
+              <con:configuration>
+                <path>id</path>
+                <content>1</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="JsonPath Count" id="005eebb1-4f98-46a6-99e6-d76c04053211" name="Count name">
+              <con:configuration>
+                <path>name</path>
+                <content>1</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="18a1d735-4305-43b8-a9fe-447b41e1b823" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CSV" searchProperties="true" disabled="true">
+      <con:settings/>
+      <con:testStep type="groovy" name="CSV" id="e38facfa-99f4-4c78-a908-e3d7748bf979">
+        <con:settings/>
+        <con:config>
+          <script>import static com.xlson.groovycsv.CsvParser.parseCsv
+def csv = '''id,carName,prodyear
+1,Saab,2009
+2,Opel,2005'''
+
+def data = parseCsv(csv)
+for(line in data) {
+    log.info "$line.id $line.carName $line.prodyear"
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:testCase id="e995b50a-7a08-4f92-aab7-c4ce3760d5a9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Json Build" searchProperties="true" disabled="true">
+      <con:settings/>
+      <con:testStep type="groovy" name="Json build" id="6b5e42ca-7270-4a8b-ad2b-0737f3135de8">
+        <con:settings/>
+        <con:config>
+          <script>import groovy.json.*
+
+def jsonSlurper = new JsonSlurper()
+def object = jsonSlurper.parseText '''
+   { 
+	"id": 1,
+      	"nameCar": "fiat",
+      	"prodYear": "1987"
+    }'''</script>
         </con:config>
       </con:testStep>
       <con:properties/>
@@ -429,7 +651,7 @@ assert respCarNameGet == respCarNamePost</scriptText>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:jmsPropertyConfig/>
             <con:parameters>
-              <entry key="id" value="26" xmlns="http://eviware.com/soapui/config"/>
+              <entry key="id" value="39" xmlns="http://eviware.com/soapui/config"/>
             </con:parameters>
           </con:restRequest>
         </con:config>
@@ -543,7 +765,7 @@ while (true)
     <con:properties>
       <con:property>
         <con:name>id_to_delete</con:name>
-        <con:value>34</con:value>
+        <con:value>40</con:value>
       </con:property>
       <con:property>
         <con:name>someValue</con:name>
