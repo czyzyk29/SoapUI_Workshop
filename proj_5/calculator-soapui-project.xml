@@ -307,7 +307,7 @@
               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
             <con:encoding>UTF-8</con:encoding>
-            <con:endpoint>http://localhost:8099</con:endpoint>
+            <con:endpoint>http://www.dneonline.com/calculator.asmx</con:endpoint>
             <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -372,7 +372,27 @@ assert resultAdd == "5"</scriptText>
           </con:request>
         </con:config>
       </con:testStep>
-      <con:testStep type="groovy" name="Groovy Script" id="1896a0e1-f504-4aeb-9fdf-bbee4ef8c3f7">
+      <con:testStep type="groovy" name="xml" id="d889eb8b-630a-4e58-8726-fc349c815bde" disabled="true">
+        <con:settings/>
+        <con:config>
+          <script>def response = testRunner.testCase.getTestStepByName('ListOfContinentsByCode').getPropertyValue("response")
+def xml = new XmlSlurper().parseText(response)
+def code= xml.Body.ListOfContinentsByCodeResponse.ListOfContinentsByCodeResult.tContinent[1].sCode
+
+/*
+def response = context.expand( '${Add#Response}' )
+def xmlSlurper = new XmlSlurper().parseText(response)
+log.info xmlSlurper.Body.AddResponse.AddResult
+
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+responseContent = testRunner.testCase.getTestStepByName("Add").getPropertyValue("response")
+def holder = groovyUtils.getXmlHolder(responseContent)
+log.info holder.getNodeValue("//*:AddResult")
+
+*/</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="if_script" id="1896a0e1-f504-4aeb-9fdf-bbee4ef8c3f7" disabled="true">
         <con:settings/>
         <con:config>
           <script>log.info "testowanie"
@@ -396,12 +416,42 @@ else
 //testRunner.testCase.testSuite.project.setPropertyValue("Project","1000")</script>
         </con:config>
       </con:testStep>
+      <con:loadTest id="26fe34df-d770-4bda-b55e-9b3beb12c345" name="LoadTest 1">
+        <con:settings/>
+        <con:threadCount>5</con:threadCount>
+        <con:startDelay>0</con:startDelay>
+        <con:sampleInterval>250</con:sampleInterval>
+        <con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed>
+        <con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange>
+        <con:historyLimit>-1</con:historyLimit>
+        <con:testLimit>60</con:testLimit>
+        <con:limitType>TIME</con:limitType>
+        <con:loadStrategy>
+          <con:type>Variance</con:type>
+          <con:config>
+            <interval>60000</interval>
+            <variance>0.5</variance>
+          </con:config>
+        </con:loadStrategy>
+        <con:assertion type="Step Status" name="Step Status"/>
+        <con:maxAssertionErrors>100</con:maxAssertionErrors>
+        <con:cancelExcessiveThreads>true</con:cancelExcessiveThreads>
+        <con:strategyInterval>500</con:strategyInterval>
+      </con:loadTest>
       <con:properties>
         <con:property>
           <con:name>TestCase</con:name>
           <con:value>2</con:value>
         </con:property>
       </con:properties>
+      <con:securityTest id="761fd253-7abb-4df3-a926-a27e2462f098" name="SecurityTest 1" failOnError="true">
+        <con:settings/>
+        <con:properties/>
+      </con:securityTest>
+      <con:securityTest id="d79a27b1-3ce1-4c74-bd50-50a796a2f261" name="SecurityTest 2" failOnError="true">
+        <con:settings/>
+        <con:properties/>
+      </con:securityTest>
     </con:testCase>
     <con:testCase id="a792fdbe-58e5-41fa-b497-3e99467dee1e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Divide TestCase" searchProperties="true">
       <con:settings/>

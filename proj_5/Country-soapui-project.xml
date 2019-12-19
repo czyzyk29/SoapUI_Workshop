@@ -1597,6 +1597,20 @@ declare namespace m='http://www.oorsprong.org/websamples.countryinfo';
           </con:request>
         </con:config>
       </con:testStep>
+      <con:testStep type="groovy" name="Groovy Script" id="44c8e57d-bd5f-4fca-a81b-23b71027fefb">
+        <con:settings/>
+        <con:config>
+          <script>def testStep = testRunner.testCase.testSteps['FullCountryInfo']
+testStep.run( testRunner, context )
+
+
+
+project = testRunner.getTestCase().getTestSuite().getProject().getWorkspace().getProjectByName("Country")
+testSuite = project.getTestSuiteByName("CountryInfoServiceSoapBinding TestSuite");
+testCase = testSuite.getTestCaseByName("FullCountryInfoAllCountries TestCase");
+runner = testCase.run(new com.eviware.soapui.support.types.StringToObjectMap(), false);</script>
+        </con:config>
+      </con:testStep>
       <con:properties/>
     </con:testCase>
     <con:testCase id="4e588330-bfc8-490e-87c4-f4d782adb9a8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="FullCountryInfoAllCountries TestCase" searchProperties="true">
@@ -1705,7 +1719,9 @@ declare namespace m='http://www.oorsprong.org/websamples.countryinfo';
           <con:interface>CountryInfoServiceSoapBinding</con:interface>
           <con:operation>ListOfContinentsByCode</con:operation>
           <con:request name="ListOfContinentsByCode" id="bb04b37f-d594-4027-8485-c216861ade75">
-            <con:settings/>
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
             <con:encoding>UTF-8</con:encoding>
             <con:endpoint>http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso</con:endpoint>
             <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.oorsprong.org/websamples.countryinfo">\r
@@ -1717,8 +1733,61 @@ declare namespace m='http://www.oorsprong.org/websamples.countryinfo';
             <con:credentials>
               <con:authType>No Authorization</con:authType>
             </con:credentials>
-            <con:wsaConfig action="http://www.oorsprong.org/websamples.countryinfo/CountryInfoServiceSoapType/ListOfContinentsByCodeRequest"/>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:wsaConfig action="http://www.oorsprong.org/websamples.countryinfo/CountryInfoServiceSoapType/ListOfContinentsByCodeRequest" mustUnderstand="NONE" version="200508"/>
+            <con:wsrmConfig version="1.2"/>
           </con:request>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="loop" id="2ff4d7e3-dba0-4598-9327-4efdaada1cf3">
+        <con:settings/>
+        <con:config>
+          <script>def response = testRunner.testCase.getTestStepByName('ListOfContinentsByCode').getPropertyValue("response")
+def xml = new XmlSlurper().parseText(response)
+
+for(int i=0;i&lt;3;i++)
+{
+	def code= xml.Body.ListOfContinentsByCodeResponse.ListOfContinentsByCodeResult.tContinent[i].sCode
+	log.info code
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="data_source" id="d30cf847-2d49-4a02-961a-f883b87f1b7d">
+        <con:settings/>
+        <con:config>
+          <script>import java.io.File;
+
+new File("C:\\Cars.txt").eachLine { line ->
+	log.info line
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="data_source_excel" id="1c6c1c4d-5e79-40a5-8a36-f17bad10d7da">
+        <con:settings/>
+        <con:config>
+          <script>import jxl.*
+import jxl.write.*
+import jxl.Workbook;
+
+def groovyutils = new com.eviware.soapui.support.GroovyUtils(context)
+def projectpath = groovyutils.projectPath
+
+def f = new File("C:\\test.xls"); 
+def wk = Workbook.getWorkbook(f);
+
+def s1 = wk.getSheet(0); 
+def r = s1.getRows(); 
+def c1
+def c2
+for(def i=0;i&lt;r;i++)
+{
+	c1 = s1.getCell(0, i).getContents()  //0 - A  // 0 - 1      //0 - A   // 1 - 2 
+	c2 = s1.getCell(1, i).getContents()  //0 - A  // 0 - 1      //0 - A   // 1 - 2 
+	
+	log.info c1 + " " + c2
+//	log.info c2
+}</script>
         </con:config>
       </con:testStep>
       <con:properties/>
